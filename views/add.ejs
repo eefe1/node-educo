@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <%-include('./inc/head')%>
-  </head>
-  <body>
-    <%-include('./inc/nav')%>
-<section>
-    <form action="/admin/add" method="post">
-        <input type="text" name="title" placeholder="name" required>
-        <input type="text" name="long" placeholder="name" required>
+<head>
+  <%-include('./inc/nav')%>
+  
+</head>
+ <style>
+  .form{
+    position: absolute;
+    left: 300px;
+    top: 180px;
+  }
+  </style> 
 
-        <input type="text" name="short" placeholder="password" required>
-        <input type="submit" value="gonder">
+<form class="form" action="/admin/add" method="post">
+  <%-include('./inc/head')%>
+  <input type="text" name="title" placeholder="name" required />
+  <input type="text" name="long" placeholder="name" required />
 
-    </form>
-</section>
-  </body>
-</html>
+  <input type="text" name="short" placeholder="password" required />
+  <input type="submit" value="gonder" />
+</form>
