@@ -1,0 +1,56 @@
+<!-- <head>
+  <%#-include('./inc/nav')%>
+  
+</head>
+ <style>
+  .form{
+    position: absolute;
+    left: 300px;
+    top: 180px;
+  }
+  </style> 
+
+<form class="form" action="/admin/add" method="post">
+  <%#-include('./inc/head')%>
+  <input type="text" name="title" placeholder="name" required />
+  <input type="text" name="long" placeholder="name" required />
+
+  <input type="text" name="short" placeholder="password" required />
+  <input type="submit" value="gonder" />
+</form> -->
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">Submit Your User</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead">Add New User</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form
+      action="/admin/addStudent"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      <div class="row g-3">
+        <div class="col-12">
+          <label for="name" class="form-label">Name</label>
+          <input type="name" name="name" id="name" class="form-control" />
+        </div>
+        <div class="col-12">
+          <label for="lastname" class="form-label">LastName</label>
+          <input
+            type="lastname"
+            name="lastname"
+            id="lastname"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit New User</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-<head>
-  <%-include('./inc/nav')%>
+<!-- <head>
+  <%#-include('./inc/nav')%>
   
 </head>
  <style>
@@ -11,10 +11,103 @@
   </style> 
 
 <form class="form" action="/admin/add" method="post">
-  <%-include('./inc/head')%>
+  <%#-include('./inc/head')%>
   <input type="text" name="title" placeholder="name" required />
   <input type="text" name="long" placeholder="name" required />
 
   <input type="text" name="short" placeholder="password" required />
   <input type="submit" value="gonder" />
-</form>
+</form> -->
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">Submit Course</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead">
+      Share your knowledge with thousands of web developers accross the
+      world. Fill course field to get started.
+    </p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form action="/admin/add" enctype="multipart/form-data" method="POST">
+      <div class="row g-3">
+        <div class="col-12">
+          <label for="title" class="form-label">Title</label>
+          <input type="title" name="title" id="title" class="form-control" />
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Short Description</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="col-12">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control"
+            cols="30"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Category</label><br />
+          <div class="categoryList">
+            <div class="categoryDiv mb-1">
+              <input type="text" name="category" class="form-control" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="addCategorysBtn"
+          >
+            + Category
+          </button>
+        </div>
+
+        <div class="col-12">
+          <label for="category">Select Category</label>
+          <select
+            class="form-select form-control"
+            name="category"
+            aria-label="Category"
+          >
+            <option selected>Select Category</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Express">Express</option>
+            <option value="React">React</option>
+            <option value="Node">Node</option>
+            <option value="MongoDB">MongoDB</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="image">Course Image</label>
+          <input
+            type="file"
+            class="form-control"
+            name="image"
+            accept="image/*"
+          />
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit Course</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

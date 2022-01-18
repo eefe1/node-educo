@@ -1,5 +1,9 @@
 const express = require("express");
+const expressLayouts = require('express-ejs-layouts');
+const fileUpload = require('express-fileupload');
 const morgan = require("morgan");
+const session = require('express-session');
+const flash = require('connect-flash');
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
 const adminRoutes = require("./routes/adminRoutes");
@@ -14,19 +18,26 @@ mongoose
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => console.log("connected db"))
   .catch((err) => console.log(err));
+require('dotenv').config();
 
-app.set("view engine", "ejs");
+
 
 app.listen(100);
 app.use(express.static("public"));
+
 app.use(express.urlencoded({ extended: true }));
+app.use(expressLayouts);
+app.set('layout', './layouts/main');
+app.set("view engine", "ejs");
 app.use(morgan("dev"));
 
 
 app.use(cookieParser())
+app.use(flash());
+app.use(fileUpload());
 app.get('*', checkUser)
 app.get("/", (req, res) => {
-  res.redirect("/blog");
+  res.redirect("/login");
 });
 
 app.use('/',authRoutes);

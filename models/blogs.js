@@ -15,6 +15,15 @@ const blogSchema = new Schema(
       type: String,
       require: true,
     },
+    category: {
+      type: String,
+      enum: ['JavaScript','Express','React','Node','MongoDB'],
+      require: true,
+    },
+    image: {
+      type: String,
+      require: true,
+    }
   },
   { timestamps: true }
 );

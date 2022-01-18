@@ -1,23 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-  </head>
-  <body>
-<section>
-    <form action="" method="post">
-        <input type="text" name="username" placeholder="name" required>
-        <input type="password" name="password" placeholder="password" required>
-        <input type="submit" value="gonder">
 
-    </form>
-</section>
-  </body>
-</html> -->
-
-<head>
-<link rel="stylesheet" href="../public/login.css">
-</head>
 <body>
   <style>
     * {
@@ -33,7 +14,7 @@ html {
 	 height: 100%;
 	 font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.page {
+.page-login {
 	 display: flex;
 	 justify-content: space-between;
 	 background-color: #262729;
@@ -42,22 +23,22 @@ html {
 	 flex-wrap: wrap;
 	 overflow: hidden;
 }
-.page .pic {
+.page-login .pic {
 	 flex: 0 0 33.3333%;
 	 max-width: 33.3333%;
 }
  @media (max-width: 840px) {
-	 .page .pic {
+	 .page-login .pic {
 		 flex: 0 0 20%;
 		 max-width: 20%;
 	}
 }
-.page .pic img {
+.page-login .pic img {
 	 width: 100%;
 	 height: 100%;
 	 object-fit: cover;
 }
-.page .main {
+.page-login .main {
 	 flex: 0 0 66.6666%;
 	 max-width: 66.6666%;
 	 display: flex;
@@ -67,97 +48,97 @@ html {
 	 padding: 4rem 5rem;
 	 padding-bottom: 0;
 }
- .page .main-wrapper {
+ .page-login .main-wrapper {
 	 width: 100%;
 }
- .page .main-footer {
+ .page-login .main-footer {
 	 width: 100%;
 	 margin: 1.5rem 0px;
 	 margin-top: auto;
 }
-.page .main-footer .title {
+.page-login .main-footer .title {
 	 font-size: 1.5rem !important;
 	 text-align: left;
 }
- .page .main-footer .copyright {
+ .page-login .main-footer .copyright {
 	 margin-top: 0.8rem;
 	 text-align: center;
 	 font-size: 0.8rem;
 }
-.page .main-footer hr {
+.page-login .main-footer hr {
 	 border-color: rgba(255, 255, 255, 0.1);
 }
-.page .main .login-methods {
+.page-login .main .login-methods {
 	 width: 100%;
 	 display: flex;
 	 justify-content: space-between;
 }
-.page .main form {
+.page-login .main form {
 	 display: flex;
 	 flex-direction: row-reverse;
 	 margin-top: 6rem;
 }
-.page .main form .form-message {
+.page-login .main form .form-message {
 	 text-align: left;
 	 padding-right: 1rem;
 	 text-transform: capitalize;
 }
- .page .main form .form-message-title {
+ .page-login .main form .form-message-title {
 	 font-size: 0.8rem;
 }
-.page .main form .form-message-body {
+.page-login .main form .form-message-body {
 	 margin-top: 1rem;
 	 font-family: "Signika Negative", sans-serif;
 	 font-weight: 400;
 	 font-size: 2.6rem;
 }
  @media (max-width: 576px) {
-	 .page .main form .form-message-body {
+	 .page-login .main form .form-message-body {
 		 font-size: 2rem;
 	}
 }
-.page .main form .form-body {
+.page-login .main form .form-body {
 	 display: flex;
 	 flex-direction: column;
 	 flex: 0 0 60%;
 	 max-width: 60%;
 }
 @media (max-width: 768px) {
-	 .page .main form .form-body {
+	 .page-login .main form .form-body {
 		 flex: 0 0 50%;
 		 max-width: 50%;
 	}
 }
 @media (max-width: 576px) {
-	 .page .main form .form-body {
+	 .page-login .main form .form-body {
 		 flex: 0 0 100%;
 		 max-width: 100%;
 	}
 }
- .page .main form .form-body input {
+ .page-login .main form .form-body input {
 	 direction: ltr;
 	 color: whitesmoke;
 	 margin: 1rem 0 !important;
 }
 @media (max-width: 576px) {
-	 .page .main form .form-body input {
+	 .page-login .main form .form-body input {
 		 margin: 0.7rem 0 !important;
 	}
 }
- .page .main form .form-body input[type="text"], .page .main form .form-body input[type="password"] {
+ .page-login .main form .form-body input[type="text"], .page-login .main form .form-body input[type="password"] {
 	 border-radius: 8px;
 	 background-color: rgba(255, 255, 255, 0.1);
 	 padding: 1rem 0.8rem;
 	 border: 1px #606673 solid;
 }
-.page .main form .form-body input::placeholder {
+.page-login .main form .form-body input::placeholder {
 	 padding: 0;
 	 margin: 0;
 	 display: flex;
 	 justify-content: baseline;
 	 color: #fff4e0;
 }
- .page .main form .form-body button[type="submit"] {
+ .page-login .main form .form-body button[type="submit"] {
 	 position: relative;
 	 margin-top: 2rem !important;
 	 background-color: #fee3ae;
@@ -176,11 +157,11 @@ html {
 	 cursor: pointer;
 }
  @media (max-width: 576px) {
-	 .page .main form .form-body button[type="submit"] {
+	 .page-login .main form .form-body button[type="submit"] {
 		 width: 100%;
 	}
 }
-.page .main form .form-body button[type="submit"]::after {
+.page-login .main form .form-body button[type="submit"]::after {
 	 
 	 content: "";
 	 position: absolute;
@@ -256,7 +237,7 @@ html {
  
   </style>
 </body>
-<div class="page">
+<div class="page-login">
   <div class="main">
     <div class="main-wrapper">
       <div class="login-methods">
