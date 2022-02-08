@@ -12,6 +12,8 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+
+
 userSchema.statics.login = async function (username, password) {
   const user = await this.findOne({username});
   if (user) {
@@ -33,5 +35,8 @@ userSchema.pre("save", async function (next) {
 });
 
 const User = new mongoose.model("user", userSchema);
-
 module.exports = User;
+
+
+
+

@@ -1,30 +1,32 @@
-const Blog = require("../models/blogs");
+const Course = require("../models/course");
 const Student = require('../models/student');
 const Category = require('../models/category');
+const coursePath = require("../models/coursePath");
 
 const admin_index = (req, res) => {
-  Blog.find()
+  Course.find()
     .sort({ createdAt: 1 })
     .then((result) => {
-      res.render("admin", { title: "Admin", blogs: result });
+      res.render("index", { title: "Admin", course: result });
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
 //GET /admin/add
 //add course 
  const admin_add = (req, res) => {
-  res.render("add", { title: "yeni yazi" });
+  res.render("add", { title: "new" });
 }; 
 
 
 //POST /admin_add
 //add course
  const admin_add_post = (req, res) => {
-  const blog = new Blog(req.body);
+  const course = new Course(req.body);
 
-  blog
+  course
     .save()
     .then((result) => {
       res.redirect("/admin");
@@ -42,7 +44,7 @@ const admin_index = (req, res) => {
 //DELETE
 const admin_delete = (req, res) => {
     const id = req.params.id;
-    Blog.findByIdAndDelete(id)
+    Course.findByIdAndDelete(id)
       .then((result) => {
         res.json({ link: "/admin" });
       })
@@ -69,11 +71,51 @@ const admin_add_post_student = (req, res) => {
       console.log(err);
     });
 }; 
+const admin_index_student = (req, res) => {
+  Student.find()
+    .sort({ createdAt: 1 })
+    .then((result) => {
+      res.render("userList", { title: "List", students: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+const admin_add_coursePath = (req, res) => {
+  res.render("addCoursePath", { title: "new" });
+}; 
+const admin_add_post_coursePath = (req, res) => {
+  const path = new coursePath(req.body);
+
+  path
+    .save()
+    .then((result) => {
+      res.redirect("coursePathList");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}; 
+
+const admin_index_coursePath = (req, res) => {
+  coursePath.find()
+    
+    .then((result) => {
+      res.render("coursePathList", { title: "List", coursePath: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 module.exports = {
   admin_index,
   admin_add,
   admin_add_post,
   admin_delete,
   admin_add_post_student,
-  admin_add_student
+  admin_add_coursePath,
+  admin_add_post_coursePath,
+  admin_index_coursePath,
+  admin_add_student,
+  admin_index_student
 };

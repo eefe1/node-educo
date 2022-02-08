@@ -7,10 +7,14 @@ const flash = require('connect-flash');
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
 const adminRoutes = require("./routes/adminRoutes");
-const blogRoutes = require("./routes/blogRoutes");
+const courseRoutes = require("./routes/courseRoutes");
+const coursePathRoutes = require('./routes/coursePathRoutes');
 const authRoutes = require('./routes/authRoutes');
-const {requireAuth, checkUser} = require('./middlewares/authMidleware')
+const {requireAuth, checkUser} = require('./middlewares/authMidleware');
 const app = express();
+
+
+
 
 const dbURL =
   "mongodb+srv://ezgi:206123Es.@nodeserver.xdrun.mongodb.net/NodeServer?retryWrites=true&w=majority";
@@ -18,7 +22,9 @@ mongoose
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => console.log("connected db"))
   .catch((err) => console.log(err));
-require('dotenv').config();
+
+
+  require('dotenv').config();
 
 
 
@@ -28,7 +34,11 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
 app.set('layout', './layouts/main');
+
+
 app.set("view engine", "ejs");
+
+
 app.use(morgan("dev"));
 
 
@@ -42,7 +52,9 @@ app.get("/", (req, res) => {
 
 app.use('/',authRoutes);
 app.use('/admin',requireAuth,adminRoutes);
-app.use('/blog', blogRoutes);
+app.use('/course', courseRoutes);
+app.use('/coursePath', coursePathRoutes);
+
 
 app.get("/about", (req, res) => {
   res.render("about", { title: "About Educo" });
@@ -55,3 +67,4 @@ app.get("/about-us", (req, res) => {
 app.use((req, res) => {
   res.status(404).render("404", { title: "Page Not Found" });
 });
+

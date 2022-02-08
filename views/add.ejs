@@ -18,12 +18,20 @@
   <input type="text" name="short" placeholder="password" required />
   <input type="submit" value="gonder" />
 </form> -->
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: #262729;
+    color: aliceblue;
+  }
+</style>
 <div class="px-4 py-5 my-5 text-center">
   <h1 class="display-5 fw-bold">Submit Course</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead">
-      Share your knowledge with thousands of web developers accross the
-      world. Fill course field to get started.
+      Share your knowledge with thousands of web developers accross the world.
+      Fill course field to get started.
     </p>
   </div>
 </div>
@@ -38,25 +46,26 @@
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Short Description</label>
+          <label for="short" class="form-label">Short Description</label>
           <input
-            type="text"
-            name="name"
-            id="name"
+            type="short"
+            name="short"
+            id="short"
             class="form-control"
             required
           />
         </div>
 
         <div class="col-12">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            name="description"
-            id="description"
+          <label for="long" name="long" class="form-label">Description</label>
+          <input
+            type="long"
+            name="long"
+            id="long"
             class="form-control"
             cols="30"
             rows="4"
-          ></textarea>
+          ></input>
         </div>
 
         <div class="col-12">

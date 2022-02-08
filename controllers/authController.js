@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const maxAge = 60 * 60 * 24;
 const createToken = (id) => {
-  return jwt.sign({ id }, "gizli kelime", { expiresIn: maxAge });
+  return jwt.sign({ id }, 'secret', { expiresIn: maxAge });
 };
 const login_get = (req, res) => {
   res.render("login", { title: "Login" });
@@ -19,8 +19,9 @@ const login_post = async (req, res) => {
     console.log(e);
   }
 };
+
 const signup_get = (req, res) => {
-  res.render("signup", { title: "kayit" });
+  res.render("signup", { title: "register" });
 };
 const signup_post = (req, res) => {
   const user = new User(req.body);
@@ -45,3 +46,4 @@ module.exports = {
   signup_post,
   logout_get,
 };
+

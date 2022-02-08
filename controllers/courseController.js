@@ -1,22 +1,23 @@
-const Blog = require("../models/blogs");
+const Course = require("../models/course");
 const Category = require("../models/category");
 
-const blog_index = (req, res) => {
-  Blog.find()
+ const course_index = (req, res) => {
+  Course.find()
     .sort({ createdAt: 1 })
     .then((result) => {
-      res.render("blog", { title: "MainPage", blogs: result });
+      res.render("course", { title: "MainPage", course: result });
     })
     .catch((err) => {
       console.log(err);
     });
-};
-const blog_content = (req, res) => {
+}; 
+
+const course_content = (req, res) => {
   const id = req.params.id;
 
-  Blog.findById(id)
+  Course.findById(id)
     .then((result) => {
-      res.render("blog", { blog: result, title: "Detay" });
+      res.render("courseDetail", { course: result, title: "Detail" });
     })
     .catch((err) => {
       res.status(404).render("404", { title: "Page Not Found" });
@@ -29,17 +30,17 @@ const homepage = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    const latest = await Blog.find({}).sort({ _id: -1 }).limit(limitNumber);
-    const JavaScript = await Blog.find({ category: "JavaScript" }).limit(
+    const latest = await Course.find({}).sort({ _id: -1 }).limit(limitNumber);
+    const JavaScript = await Course.find({ category: "JavaScript" }).limit(
       limitNumber
     );
-    const Express = await Blog.find({ category: "Express" }).limit(limitNumber);
-    const Node = await Blog.find({ category: "Node" }).limit(limitNumber);
-    const MongoDB = await Blog.find({ category: "MongoDB" }).limit(limitNumber);
-    const React = await Blog.find({ category: "React" }).limit(limitNumber);
+    const Express = await Course.find({ category: "Express" }).limit(limitNumber);
+    const Node = await Course.find({ category: "Node" }).limit(limitNumber);
+    const MongoDB = await Course.find({ category: "MongoDB" }).limit(limitNumber);
+    const React = await Course.find({ category: "React" }).limit(limitNumber);
     const courseIndex = { latest, JavaScript, Express, Node, MongoDB, React };
 
-    res.render("admin", { title: "Educo", categories, courseIndex });
+    res.render("index", { title: "Educo", categories, courseIndex });
   } catch (error) {
     res.status(500).send({ message: error.message || "Error" });
   }
@@ -61,7 +62,7 @@ const exploreCategoriesById = async (req, res) => {
   try {
     let categoryId = req.params.id;
     const limitNumber = 10;
-    const categoryById = await Blog.find({ category: categoryId }).limit(
+    const categoryById = await course.find({ category: categoryId }).limit(
       limitNumber
     );
     res.render("categories", { title: "Courses - Categoreis", categoryById });
@@ -74,7 +75,7 @@ const exploreCategoriesById = async (req, res) => {
 const searchCourse = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
-    let course = await Blog.find({
+    let course = await Course.find({
       $text: { $search: searchTerm, $diacriticSensitive: true },
     });
     res.render("search", { title: "Search", course });
@@ -87,7 +88,7 @@ const searchCourse = async (req, res) => {
 const exploreLatest = async(req, res) => {
   try {
     const limitNumber = 10;
-    const course = await Blog.find({}).sort({ _id: -1 }).limit(limitNumber);
+    const course = await Course.find({}).sort({ _id: -1 }).limit(limitNumber);
     res.render('explore-latest', { title: 'Educo - Explore Latest', course } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error" });
@@ -97,9 +98,9 @@ const exploreLatest = async(req, res) => {
 //explore random as Json
 const exploreRandom = async(req, res) => {
   try {
-    let count = await Blog.find().countDocuments();
+    let count = await Course.find().countDocuments();
     let random = Math.floor(Math.random() * count);
-    let course = await Blog.findOne().skip(random).exec();
+    let course = await Course.findOne().skip(random).exec();
     res.render('explore-random', { title: 'Educo - Explore Latest', course } );
   } catch (error) {
     res.satus(500).send({message: error.message || "Error" });
@@ -146,8 +147,8 @@ const exploreRandom = async(req, res) => {
 // insertDymmyCategoryData();
 
 module.exports = {
-  blog_index,
-  blog_content,
+  course_index,
+  course_content,
   homepage,
   exploreCategories,
   exploreCategoriesById,
